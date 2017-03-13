@@ -1,0 +1,70 @@
+<!doctype html>
+    <html ng-app="CertMgt">
+    <head>
+        <meta charset="utf-8">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script src="angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.1/angular-datatables.min.js"></script>
+        <script src="app.js"></script>
+      
+        <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.1/css/angular-datatables.css"/>
+        
+          
+        </script>
+        
+    </head>
+    <body>
+        <header>
+            <nav id="header-nav" class="navbar navbar-default">
+                <div class="container">
+                     <div class="navbar-header">
+                         <div id="logo" alt="logo"></div>
+                         </div>
+                         <div class="navbar-brand">
+                            <h1>Axon Certificate Management</h1>
+                         </div>
+                         
+                </div>
+            </nav>
+        </header>
+       <body>
+   
+  <div class="container" ng-controller="CertMgtController as certCtrl">
+              <div class="dropdown">
+     Choose environment : <select ng-model="certCtrl.selectedEnv"  ng-change= "certCtrl.update()" ng-options="env for env in certCtrl.envList">
+</select>
+   
+  
+ 
+  </div>
+      <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Certificate Name</th>
+                            <th>Environment</th>
+                            <th>Certificate Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cert in certCtrl.certs| filter : {env: certCtrl.selectedEnv } ">
+                        <td>{{cert.name}}</td>
+                        <td>{{cert.env}}</td>
+                        <td>{{cert.link}}</td>
+                        <td><button ng-click="certCtrl.download(cert.link)">Download</button></td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+               
+          
+        
+    </div> 
+  </div>
+   
+       </body>
+    
+</html>

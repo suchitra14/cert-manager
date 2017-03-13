@@ -1,0 +1,35 @@
+body {
+    color:#fff;
+    background-color: tan   ;
+    
+}
+
+#header-nav {
+    background-color: #f6b319;
+    border-radius :0;
+}
+
+#logo {
+    background-image: url(Mastercard_logo.png);
+    opacity: 0.5;
+    width: 200px;
+    height: 175px;
+    margin: 10px 15px 10px 15px;
+   
+
+    
+}
+.navbar-brand {
+    padding-top : 20px;
+
+
+}
+.navbar-brand h1{
+    margin-left: 150px;
+    
+}
+button, select {
+    color: black;
+}
+    
+}
