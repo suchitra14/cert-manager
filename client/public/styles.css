@@ -1,35 +1,93 @@
 body {
-    color:#fff;
     background-color: tan   ;
-    
 }
 
 #header-nav {
-    background-color: #f6b319;
+    background-color: #f08080;
     border-radius :0;
+    border:0;
 }
 
 #logo {
-    background-image: url(Mastercard_logo.png);
-    opacity: 0.5;
-    width: 200px;
-    height: 175px;
+    background-image: url(mclogo.png);
+    background-repeat: no-repeat;
+    width: 75px;
+    height: 65px;
     margin: 10px 15px 10px 15px;
    
 
     
 }
 .navbar-brand {
-    padding-top : 20px;
+    padding-top : 25px;
 
 
 }
-.navbar-brand h1{
-    margin-left: 150px;
+
+.btn-warning{
+    background-color: #f08080;
+    border: 0;
+}
+
+
+table.dataTable.table-condensed .sorting:after, table.dataTable.table-condensed .sorting_asc:after, table.dataTable.table-condensed .sorting_desc:after, table.dataTable.table-condensed .sorting_asc_disabled:after, table.dataTable.table-condensed .sorting_desc_disabled:after{
+    opacity: 0;    
+}
+
+td:first-child{
+ width: 25px;   
+}
+
+
+.create-box{
+    border: 1px solid black;
+}
+
+.form-group{
+    margin: 10px 30px 10px 0px;
+}
+
+.btn-create{
+    margin-top: 15px;
     
 }
+
+.fa-plus{
+    color: black;
+}
+
+td, th{
+    color: black;
+    background-color: tan;
+}
+
+.navbar-brand h1{
+    margin-left: 150px;
+    color : #b22222;
+
+    
+}
+.form-group {
+    padding-left : 40px;
+}
+.text-field {
+    display : inline-block;
+    padding-left: 10px;
+    height: 25px;
+    
+}
+#strip {
+    width: 100%; 
+    height: 2px;
+    border-style: solid;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(red), to(blue));
+    background: -webkit-linear-gradient(red, blue);
+    background: -moz-linear-gradient(red, blue);
+    background: -o-linear-gradient(red, blue);
+    background: linear-gradient(red, blue);
+}
+
 button, select {
     color: black;
 }
     
-}

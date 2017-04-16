@@ -1,0 +1,31 @@
+<div class="panel-body" ng-controller="CreateCertsCtrl as createCtrl">
+<div class="row">
+  <div class="col-sm-8 create-box">
+   <div class="form-group">
+       <input type="text" placeholder="CN Name" class="form-control text-field" ng-model="createCtrl.certificate.cn">
+   </div>
+  
+   <div class="form-group">
+       <input type="text" placeholder="Organizational Unit Name" class="form-control text-field" ng-model="createCtrl.certificate.ou">
+   </div>
+ 
+   <div class="form-group">
+       <input type="text" placeholder="Organization Name" class="form-control text-field" ng-model="createCtrl.certificate.org">
+   </div>
+   <div class="form-group">
+       <input type="text" placeholder="State" class="form-control text-field" ng-model="createCtrl.certificate.state">
+   </div>
+   <div class="form-group">
+      <input type="text" placeholder="City" class="form-control text-field" ng-model="createCtrl.certificate.city">
+   </div>
+   <div class="form-group">
+      <input type="text" placeholder="Country" class="form-control text-field" ng-model="createCtrl.certificate.country">
+   </div>
+   <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" ng-click="createCtrl.createCerts(createCtrl.certificate)">Create Certs</button>
+   </div>
+  </div>
+  <div class="col-sm-4">
+     <h3> Description about Certificates</h3>
+  </div>
+</div>

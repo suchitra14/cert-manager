@@ -1,0 +1,55 @@
+ <div class="container" ng-controller="CertMgtController as certCtrl">
+      <!--  <div class="dropdown">
+     Choose environment : <select ng-model="certCtrl.selectedEnv"  ng-change= "certCtrl.update()" ng-options="env for env in certCtrl.envList">
+            </select>
+        </div>-->
+    <button class="pull-right download btn btn-primary" ng-click="certCtrl.download(certCtrl.certs)">Download</button>
+  
+  
+      <div>
+    <table class="table table-condensed" id="cert_table" ng-view></table>
+    
+</div>
+
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+ <!--cert_table
+  </div>
+      <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>                            
+                            <th>Certificate Name</th>
+                            <th>Environment</th>
+                            <th>Certificate Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cert in certCtrl.certs" | filter : certCtrl.selectedEnv>
+                        <td><input type="checkbox" ng-model="cert.selected" 
+                         ng-true-value="'{{cert.link}}'" ng-false-value="''"
+                            id="'{{cert.name}}'" ></td>
+                        <td>{{cert.name}}</td>
+                        <td>{{cert.env}}</td>
+                        <td>{{cert.link}}</td>
+                      
+                    </tr>
+                    
+                </tbody>
+                </table>
+                
+               
+          
+        
+    </div> 
+  </div>
+  
+  -->

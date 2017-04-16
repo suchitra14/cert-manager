@@ -78,4 +78,3 @@ ws.axon.sandbox.
 ws.axon.sandbox02.dev.mastercard.int-ks.jks
 ws.axon.sandbox.dev.mastercard.int-keystore.p12
 ws.axon.sandbox.jks
-

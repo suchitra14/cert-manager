@@ -2,68 +2,55 @@
     <html ng-app="CertMgt">
     <head>
         <meta charset="utf-8">
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-        <script src="angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.1/angular-datatables.min.js"></script>
-        <script src="app.js"></script>
-      
+         
         <link rel="stylesheet" href="bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.1/css/angular-datatables.css"/>
-        
-          
-        </script>
-        
+        <link href="DataTables/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="DataTables/media/css/jquery.dataTables.min.css" type="text/css" />
+        <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
         <header>
             <nav id="header-nav" class="navbar navbar-default">
                 <div class="container">
-                     <div class="navbar-header">
-                         <div id="logo" alt="logo"></div>
-                         </div>
-                         <div class="navbar-brand">
-                            <h1>Axon Certificate Management</h1>
-                         </div>
-                         
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-2 navbar-header" >
+                        <button class="btn-view btn-warning" ui-sref="view" title="Home">
+                            <i id="logo" alt="logo" class="navbar-brand">
+                            </i>
+                        </button>
+                    </div>
+                    <div class="col-sm-6">
+                        <h2 class="text-center">Axon Certificate Management</h2>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn-create btn-warning" ui-sref="create" title="Create">
+                            <i class="fa fa-plus fa-3x" aria-hidden="true" >
+                            </i>
+                        </button>
+                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
+                  <div id ="strip"></div>
             </nav>
-        </header>
-       <body>
-   
-  <div class="container" ng-controller="CertMgtController as certCtrl">
-              <div class="dropdown">
-     Choose environment : <select ng-model="certCtrl.selectedEnv"  ng-change= "certCtrl.update()" ng-options="env for env in certCtrl.envList">
-</select>
-   
-  
- 
-  </div>
-      <div class="row">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Certificate Name</th>
-                            <th>Environment</th>
-                            <th>Certificate Link</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="cert in certCtrl.certs| filter : {env: certCtrl.selectedEnv } ">
-                        <td>{{cert.name}}</td>
-                        <td>{{cert.env}}</td>
-                        <td>{{cert.link}}</td>
-                        <td><button ng-click="certCtrl.download(cert.link)">Download</button></td>
-                    </tr>
-                    
-                </tbody>
-                </table>
-               
           
+        </header>
+        <div class="container">
+            <div class="col-sm-10">
+                <ui-view></ui-view>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
         
-    </div> 
-  </div>
+   
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+            <script src="angular.min.js"></script>
+            <script src="angular-ui-router.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.1/angular-datatables.min.js"></script>
+            <script type="text/javascript" src="DataTables/media/js/jquery.dataTables.min.js"></script>
+            <script src="app.js"></script>
    
        </body>
     

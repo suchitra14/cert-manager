@@ -1,0 +1,50 @@
+body {
+	background-color: #FFF;
+}
+.container{
+	background-color: #fff;
+}
+#header{
+	background-color: #636060;
+	width: 100%;
+	z-index: 99999;
+}
+#header .login{
+	margin: 10px;
+}
+#header div.row{
+	color:#fff;
+	background: #636060;
+}
+ul.big-list li{
+	margin-bottom: 5px;
+}
+#homebar{
+	background-color:#D6C9B1;
+	border-bottom: 1px solid #BD9494;
+}
+
+#homebar .container{
+	background-color:#D6C9B1;
+}
+#homebar .main_text p.lead{
+	margin-top: 44px;
+	font-size: 18px;
+}
+#homebar img{
+	margin-top: 15px;
+}
+#nav-strip {
+    background: linear-gradient(to right, #ffd947 0px, #ca171d 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 6px;
+    
+}
+#user_button{
+	color: #FFF;
+    background: #636060;
+    border: 0px;
+    font-size: 17px;
+}
+#top_cluster{
+    margin-bottom:5px;
+}

@@ -6,53 +6,55 @@ var app = express();
 var sys = require('sys');
 var exec = require('child_process').exec;
 
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 var child;
 
 
 app.get('/certs', function(req, res){
     exec(__dirname +"/test.sh", function(error, stdout, stderr){
-    sys.print(stdout);
-    sys.print(stderr)
-    if(error != null){
-        console.log(error);
-    }
-    
-    // stdout will be a string separated by /n
-    
-    var op = stdout.replace(/\n/g,',').split(',')
-    var out = op.map(function(val){
-        // all the logic to form the object
-         var ret = {}
-         ret.name = getName(val)
-         ret.env =  getEnv(val)
-        ret.link = val
-        return ret  
-        })
-    
-    res.writeHead(200)
-    res.write(JSON.stringify(out))
-    res.end()
-   })
-    
+        sys.print(stdout);
+        sys.print(stderr)
+        if(error != null){
+            console.log(error);
+        }
+        
+        // stdout will be a string separated by /n
+        
+        var op = stdout.replace(/\n/g,',').split(',')
+        var out = op.map(function(val){
+            // all the logic to form the object
+             var ret = {}
+             ret.name = getName(val)
+             ret.env =  getEnv(val)
+            ret.link = val
+            return ret  
+            })
+        
+        res.writeHead(200)
+        res.write(JSON.stringify(out))
+        res.end()
+    })
 })
 
 app.get('/download', function(req, res){
-
-  var file = fs.readFileSync(__dirname + '/certs/consumer-keystore.jks', 'binary');
- res.setHeader('Content-disposition', 'attachment; filename=consumer-keystore.jks');
- res.setHeader('Content-type', 'text');
-  res.setHeader('Content-Length', file.length);
-  res.write(file, 'binary');
-  res.end();
-
-    
-    
-    
-    
-    
+    exec(__dirname +"/download.sh" +req.query.name, function(error, stdout, stderr){
+            sys.print(stdout);
+            sys.print(stderr)
+            if(error != null){
+                console.log(error);
+            }
+        })
+    var file = fs.readFileSync('/home/dc-user/Develop/Cert-Management-old/cert-files/'+req.query.name, 'binary');
+    res.setHeader('Content-disposition', 'attachment; filename=consumer-keystore.jks');
+    res.setHeader('Content-type', 'text');
+    res.setHeader('Content-Length', file.length);
+    res.write(file, 'binary');
+    res.end();
     
 });
-
 
 
 function getName(val){
@@ -65,8 +67,9 @@ function getName(val){
             name ="Axon Broker"
         }else if(val.indexOf("axon")!== -1){
             name = "Axon CP UI"
-        } else {
-            name ="Axon"
+        }
+        else {
+            name ="Axon-Broker"
         }
     return name;    
 }
@@ -83,8 +86,8 @@ function getEnv(val){
         env="SA-Dev"
     }else if(val.indexOf("axon04")!== -1){
         env="US-Dev2"
-    } else {
-        env ="Dev"
+    }else {
+        env ="US-Dev1"
     }
     return env;
 }
@@ -114,7 +117,30 @@ app.get('/', function(req, res){
     
 })*/
 
-app.listen(8080)
+app.post('/certs/create', function(req, res){
+    
+    var temp = JSON.parse(Object.keys(req.body)[0]);
+    
+    var cn = temp.cn
+    var ou = temp.ou
+    var state = temp.state
+    var org = temp.org
+    var city = temp.city
+    var country = temp.country
+    exec(__dirname +"/create.sh "+ cn + " " + ou + " " + org + " " + state + " " + org + " " + city + " " + country, function(error, stdout, stderr){
+        sys.print(stdout);
+        sys.print(stderr)
+        if(error != null){
+            console.log(error)
+        }
+        res.writeHead(200)
+        res.write(stdout)
+        res.end()
+    })
+})
+
+
+app.listen(process.env.PORT || 8080)
 
 
 
